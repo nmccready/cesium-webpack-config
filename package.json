@@ -1,6 +1,6 @@
 {
   "name": "@znemz/cesium-webpack-config",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "webpack config extensions to get cesium in your bundle to undo the requirejs insanity",
   "keywords": [
     "cesium",
