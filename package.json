@@ -34,8 +34,7 @@
   },
   "dependencies": {
     "copy-webpack-plugin": "^4.6.0",
-    "lodash": "^4.17.11",
-    "webpack": "<=4 >2"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@znemz/eslint-config-react": "^0.0.3",
@@ -61,7 +60,11 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "sort-package-json": "^1.15.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack": "<=4 >2"
+  },
+  "peerDependencies": {
+    "webpack": "<=4 >2"
   },
   "mainCss": "dist/index.css"
 }
