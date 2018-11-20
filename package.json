@@ -32,6 +32,7 @@
     "pretest": "yarn build"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^4.6.0",
     "webpack": "4"
   },
   "devDependencies": {

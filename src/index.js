@@ -7,7 +7,6 @@ import webpack from 'webpack';
 
 import paths from './paths';
 
-
 // exporting as this get used time and time again in storybook configs
 // TODO: .. get this dedicated repo.. eventually
 export const assign = (obj = {}, extend) => Object.assign(obj, extend);

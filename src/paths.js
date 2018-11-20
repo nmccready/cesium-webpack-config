@@ -1,6 +1,6 @@
 import path from 'path';
 
-export default function paths(startPath)  {
+export default function paths(startPath) {
   // aiding with cesiums crazy node setup process since there is no
   // main entry point in package.json
   const root = path.join(startPath, 'node_modules/cesium');
@@ -18,4 +18,4 @@ export default function paths(startPath)  {
   });
 
   return toReturn;
-};
+}
