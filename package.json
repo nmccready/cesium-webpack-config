@@ -29,10 +29,12 @@
     "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
     "prepublishOnly": "yarn build",
     "start": "rollup -c -w",
-    "pretest": "yarn build"
+    "pretest": "yarn build",
+    "test": "jest"
   },
   "dependencies": {
     "copy-webpack-plugin": "^4.6.0",
+    "lodash": "^4.17.11",
     "webpack": "4"
   },
   "devDependencies": {

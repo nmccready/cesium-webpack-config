@@ -4,23 +4,28 @@
 import path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import webpack from 'webpack';
+import { merge as _merge } from 'lodash';
 
 import paths from './paths';
 
 // exporting as this get used time and time again in storybook configs
 // TODO: .. get this dedicated repo.. eventually
-export const assign = (obj = {}, extend) => Object.assign(obj, extend);
+export const assign = (obj = {}, extend) => Object.assign({}, obj, extend);
 export const concat = (array = [], toConcat) => array.concat(toConcat);
+export const merge = (obj = {}, extend) => _merge(obj, extend);
 
 export default function cesiumWebpack(config, rootPath) {
   const cesiumPaths = paths(rootPath);
-  config.output.sourcePrefix = '';
+  config.output = assign(config.output, { sourcePrefix: '' });
   config.amd = assign(config.amd, { toUrlUndefined: true });
   config.node = assign(config.node, { fs: 'empty' });
-  config.resolve.alias = assign(config.resolve.alias, {
-    // Cesium module name
-    cesium: path.resolve(__dirname, cesiumPaths.cesium)
+  config.resolve = merge(config.resolve, {
+    alias: {
+      // Cesium module name
+      cesium: path.resolve(__dirname, cesiumPaths.cesium)
+    }
   });
+  config.module = config.module || {};
   config.module.rules = concat(config.module.rules, {
     test: /\.css$/,
     loaders: ['style-loader', 'css-loader'],
@@ -39,4 +44,4 @@ export default function cesiumWebpack(config, rootPath) {
   ]);
 
   return config;
-};
+}
