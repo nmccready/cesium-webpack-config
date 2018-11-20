@@ -14,7 +14,10 @@ export const assign = (obj = {}, extend) => Object.assign({}, obj, extend);
 export const concat = (array = [], toConcat) => array.concat(toConcat);
 export const merge = (obj = {}, extend) => _merge(obj, extend);
 
-export default function cesiumWebpack(config, rootPath) {
+// default proxy whatever setting
+const proxy = (obj) => obj;
+
+export default function cesiumWebpack(config, { rootPath, copy = proxy } = {}) {
   const cesiumPaths = paths(rootPath);
   config.output = assign(config.output, { sourcePrefix: '' });
   config.amd = assign(config.amd, { toUrlUndefined: true });
@@ -34,9 +37,9 @@ export default function cesiumWebpack(config, rootPath) {
 
   config.plugins = concat(config.plugins, [
     // Copy Cesium Assets, Widgets, and Workers to a static directory
-    new CopyWebpackPlugin([{ from: cesiumPaths.workers, to: 'Workers' }]),
-    new CopyWebpackPlugin([{ from: cesiumPaths.assets, to: 'Assets' }]),
-    new CopyWebpackPlugin([{ from: cesiumPaths.widgets, to: 'Widgets' }]),
+    new CopyWebpackPlugin([copy({ from: cesiumPaths.workers, to: 'Workers' })]),
+    new CopyWebpackPlugin([copy({ from: cesiumPaths.assets, to: 'Assets' })]),
+    new CopyWebpackPlugin([copy({ from: cesiumPaths.widgets, to: 'Widgets' })]),
     new webpack.DefinePlugin({
       // Define relative base path in cesium for loading assets
       CESIUM_BASE_URL: JSON.stringify('../')

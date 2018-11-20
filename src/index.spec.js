@@ -7,7 +7,7 @@ const rootPath = path.join(__dirname, '../');
 describe(cesiumWebpack.name, () => {
   let config;
   beforeAll(() => {
-    config = cesiumWebpack({}, rootPath);
+    config = cesiumWebpack({}, { rootPath });
     expect(config).toBeTruthy();
   });
   it('should handle empty object', () => {});
