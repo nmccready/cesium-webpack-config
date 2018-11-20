@@ -1,0 +1,64 @@
+{
+  "name": "@znemz/cesium-webpack-config",
+  "version": "0.0.1",
+  "description": "webpack config extensions to get cesium in your bundle to undo the requirejs insanity",
+  "keywords": [
+    "cesium",
+    "webpack"
+  ],
+  "homepage": "https://github.com/nmccready/cesium-webpack-config#readme",
+  "bugs": {
+    "url": "https://github.com/nmccready/cesium-webpack-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmccready/cesium-webpack-config.git"
+  },
+  "license": "MIT",
+  "author": "Nicholas McCready",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/esm.js",
+  "scripts": {
+    "prebuild": "yarn sort-package-json & yarn clean",
+    "build": "rollup -c",
+    "clean": "rm -rf dist *.log",
+    "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
+    "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
+    "prepublishOnly": "yarn build",
+    "start": "rollup -c -w",
+    "pretest": "yarn build"
+  },
+  "dependencies": {
+    "webpack": "4"
+  },
+  "devDependencies": {
+    "@znemz/eslint-config-react": "^0.0.3",
+    "@znemz/prettier-config": "^0.0.1",
+    "babel-cli": "6",
+    "babel-core": "6",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "6",
+    "babel-plugin-transform-object-rest-spread": "6",
+    "babel-preset-env": "^1.7",
+    "cesium": "1.48.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "23",
+    "jest-extended": "^0.8",
+    "prettier": "^1.15.2",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "^3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "sort-package-json": "^1.15.0",
+    "style-loader": "^0.23.1"
+  },
+  "mainCss": "dist/index.css"
+}
